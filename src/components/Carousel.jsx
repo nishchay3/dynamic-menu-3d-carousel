@@ -101,6 +101,30 @@ export const Carousel = () => {
   };
 
   /**
+   * Handler for clicking on an image.
+   * @description Rotate the gallery class order array by the difference between
+   * clicked image index and 3
+   */
+  const handleImageClick = (imageIndex) => {
+    let diff = galleryClassOrder.indexOf(3) - imageIndex;
+    console.log(galleryClassOrder, diff);
+    if (diff < 0) {
+      let temp = [...galleryClassOrder];
+      for (let i = 0; i < diff * -1; i++) {
+        temp.unshift(temp.pop());
+      }
+      setGalleryClassOrder(temp);
+    }
+    if (diff > 0) {
+      let temp = [...galleryClassOrder];
+      for (let i = 0; i < diff; i++) {
+        temp.push(temp.shift());
+      }
+      setGalleryClassOrder(temp);
+    }
+  };
+
+  /**
    * Translate the gallery items by updating their class names.
    */
   function translateGalleryItems() {
@@ -175,6 +199,9 @@ export const Carousel = () => {
                   src={image.url}
                   alt={image.alt}
                   key={index}
+                  onClick={() => {
+                    handleImageClick(index);
+                  }}
                 />
               );
             })}
