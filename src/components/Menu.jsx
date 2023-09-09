@@ -43,25 +43,18 @@ export const Menu = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   /**
+   * Effect to set menu items once after the first render
+   */
+  useEffect(() => {
+    setMenuItems();
+  }, []);
+
+  /**
    * Effect to handle resizing and updating the visible and hidden menu items.
    */
   useLayoutEffect(() => {
-    /**
-     * Function to set visible and hidden menu items based on container width.
-     */
-    const setMenuItems = () => {
-      if (menuItemsRef.current.clientWidth < menuItemsRef.current.scrollWidth) {
-        setVisibleMenuItems((current) => {
-          let temp = [...current];
-          setMoreMenuItems([temp.pop(), ...moreMenuItems]);
-          return temp;
-        });
-      }
-    };
-
     setMenuItems();
     window.addEventListener("resize", setMenuItems);
-
     return () => {
       window.removeEventListener("resize", setMenuItems);
     };
@@ -81,6 +74,19 @@ export const Menu = () => {
       document.addEventListener("click", handleClickOutside);
     };
   }, []);
+
+  /**
+   * Function to set visible and hidden menu items based on container width.
+   */
+  const setMenuItems = () => {
+    if (menuItemsRef.current.clientWidth < menuItemsRef.current.scrollWidth) {
+      setVisibleMenuItems((current) => {
+        let temp = [...current];
+        setMoreMenuItems([temp.pop(), ...moreMenuItems]);
+        return temp;
+      });
+    }
+  };
 
   /**
    * Handler for the search form submission.

@@ -8,6 +8,7 @@
 
   .MenuItems {
     @extend .scrollbar-hidden;
+    display: flex;
     margin: auto;
     overflow-x: scroll;
     text-transform: uppercase;
@@ -19,6 +20,7 @@
       cursor: pointer;
     }
     .MoreItem {
+      @extend .flex-row;
       &::after {
         content: url("../assets/images/chevron-down.svg");
         position: relative;
