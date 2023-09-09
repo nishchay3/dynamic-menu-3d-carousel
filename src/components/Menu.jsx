@@ -43,13 +43,6 @@ export const Menu = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   /**
-   * Effect to set menu items once after the first render
-   */
-  useEffect(() => {
-    setMenuItems();
-  }, []);
-
-  /**
    * Effect to handle resizing and updating the visible and hidden menu items.
    */
   useLayoutEffect(() => {
