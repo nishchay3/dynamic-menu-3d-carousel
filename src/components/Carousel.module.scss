@@ -1,0 +1,88 @@
+@import "../styles/helpers.scss";
+
+.CarouselWrapper {
+  @extend .flex-col;
+  width: -webkit-fill-available;
+  margin: 8.3125rem 2.75rem;
+
+  .Headers {
+    @extend .flex-col;
+    h1 {
+      margin: 0;
+      color: var(--primary-black-black-500, #231f20);
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 42px;
+    }
+    p {
+      margin-top: 2rem;
+      color: var(--primary-black-black-500, #231f20);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 32px; /* 133.333% */
+    }
+  }
+
+  .Gallery {
+    width: 100%;
+
+    .GalleryContainer {
+      @extend .flex-row;
+      position: relative;
+      height: 25rem;
+      margin-top: 3rem;
+
+      .GalleryItem {
+        height: 10rem;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+        width: 18rem;
+        z-index: 0;
+        background-size: contain;
+        cursor: pointer;
+      }
+      .GalleryItem1 {
+        left: 15%;
+        transform: translateX(-50%);
+      }
+      .GalleryItem2,
+      .GalleryItem4 {
+        height: 16rem;
+        width: 26rem;
+        z-index: 1;
+      }
+      .GalleryItem2 {
+        left: 30%;
+        transform: translateX(-50%);
+      }
+      .GalleryItem3 {
+        height: 25rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 39rem;
+        z-index: 2;
+      }
+      .GalleryItem4 {
+        left: 70%;
+        transform: translateX(-50%);
+      }
+      .GalleryItem5 {
+        left: 85%;
+        transform: translateX(-50%);
+      }
+    }
+    .GalleryControls {
+      @extend .flex-row;
+      margin-top: 2rem;
+      padding: 8px;
+
+      .GalleryControlsPrevious,
+      .GalleryControlsNext {
+        background-color: #ffffff;
+        outline: none;
+        padding: 0.75rem;
+        border: none;
+      }
+    }
+  }
+}
